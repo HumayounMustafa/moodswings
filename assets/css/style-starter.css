@@ -13704,5 +13704,21 @@ button.owl-next {
     font-size: 35px; }
   .w3l-service-breadcrum .breadcrum-bg {
     padding-top: 69px; } }
+.InputLabel {
+  font-size: 25px;
+  color: var(--pink);
+  text-align: left;
+  margin-top: 3px;
+}
+
+.textbox {
+  margin-left: 20px;
+}
+
+.LogIn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*# sourceMappingURL=style-starter.css.map */
