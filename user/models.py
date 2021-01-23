@@ -26,3 +26,13 @@ class User:
 
         if db.users.insert_one(user):
             return self.start_session(user)
+        
+            def signout(self):
+        session.clear()
+        return redirect('/user/login')
+
+    def login(self):
+        user= db.users.find_one({'email':request.form.get('username'),'password':request.form.get('password')})
+        if user:
+            return self.start_session(user)
+        return "Invalid username or password"
