@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from app import app
 from user.models import User
 from app import login_required
@@ -29,3 +29,21 @@ def loginPost():
 @login_required
 def profile():
     return render_template('profile.html')
+
+@app.route('/user/forget_password')
+def forget_password():
+    return render_template('forget password.html')
+
+
+@app.route('/user/reset_email', methods=['POST'])
+def send_email():
+    return User().sendEmail()
+
+
+@app.route('/user/confirm_email/<token>')
+def confirm_email(token):
+    return User().set_password(token)
+
+@app.route('/user/reset_password', methods=['POST'])
+def reset_password():
+    return User().change_password()

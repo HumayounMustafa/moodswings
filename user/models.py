@@ -1,6 +1,8 @@
-from flask import Flask, jsonify, request, redirect, session, render_template
+from flask import Flask, jsonify, request, redirect, session, render_template, url_for
+from flask_mail import Mail, Message
 import uuid
-from app import db
+from app import db, serializer, mail
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 
 class User:
@@ -26,13 +28,44 @@ class User:
 
         if db.users.insert_one(user):
             return self.start_session(user)
-        
-            def signout(self):
+    def signout(self):
         session.clear()
         return redirect('/user/login')
+
+    def sendEmail(self):
+        email =  request.form.get('email')
+        token = serializer.dumps(email, salt='email-confirm')
+        msg = Message('Confirm Email To Reset Password', sender='projectmoodswings@gmail.com', recipients=[email])
+        link = url_for('confirm_email', token=token, _external=True)
+        msg.body = 'Kindly follow the link to change your password {}'.format(link)
+        
+        mail.send(msg)
+
+        return 'Kindly check your email <strong>{}</strong> to continue...'.format(email)
+
+    def set_password(self, token):
+        try:
+            email = serializer.loads(token, salt='email-confirm', max_age=36000)
+        except SignatureExpired:
+            return '<h1>The token is expired!</h1>'
+        user = db.users.find_one({'email': email})
+        return render_template('reset_password.html', email=email)
 
     def login(self):
         user= db.users.find_one({'email':request.form.get('username'),'password':request.form.get('password')})
         if user:
             return self.start_session(user)
         return "Invalid username or password"
+
+    def change_password(self):
+        email =  request.form.get('email')
+        password = request.form.get('password')
+        try:
+            user = db["users"].find_one({'email': email})
+            user["password"] = password
+            updated = db["users"].save(user)
+        except SignatureExpired:
+            return '<h1>An Error has occured</h1>'
+
+        return redirect('/user/login')    
+    
