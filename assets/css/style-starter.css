@@ -13720,5 +13720,16 @@ button.owl-next {
   margin-left: auto;
   margin-right: auto;
 }
+/* Preview */
+.preview{
+   width: 200px;
+   height: 200px;
+   border: 2px solid black;
+   margin: 0 auto;
+   background: white;
+}
 
+.preview img{
+   display: none;
+}
 /*# sourceMappingURL=style-starter.css.map */
