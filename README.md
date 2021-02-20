@@ -69,7 +69,7 @@ Following modules wil be added in project
  
 ## Authors
 
-* **Hummyoun Mustafa**
+* **Humayoun Mustafa**
 * **Sahrish Khan**
 * **Alishah Khan**
 
