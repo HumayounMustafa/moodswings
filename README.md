@@ -5,18 +5,18 @@ Different opt-in are avail in software user can select any option and create a n
 
 ## Getting Started
 
-First you need a local machine to run the application.
-Then you need the clone of this project.
+1. First you need a local machine to run the application.
+2. Then you need the clone of this project.
 
 
 ### Prerequisites
 
 You need followings things
 
-1-Python version 3.9
-2-Flask        1.1.2
-3-Flask-Mail   0.9.1
-4-pymongo      3.11.2
+1. Python version 3.9
+2. Flask        1.1.2
+3. Flask-Mail   0.9.1
+4. pymongo      3.11.2
  
 
 
