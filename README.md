@@ -46,20 +46,20 @@ $ flask run
 ## Present Modules
 
 Following modules had been created in the Project
-1- Admin Signup and Sign in 
-2- User Singnup and Sign in
-3- Insert, delete and update Admin 
-4- Forget/Change password using E-mail verification
+1. Admin Signup and Sign in 
+2. User Singnup and Sign in
+3. Insert, delete and update Admin 
+4. Forget/Change password using E-mail verification
 
 
 ## Future Work
 
 Following modules wil be added in project
-1- User successfully input an image. 
-2- System successfully detect the mood of the user's image.
-3- User can select different moods from application. 
-4- System convert the user's image into selected mood successfully.
-5- System Trainning
+1. User successfully input an image. 
+2. System successfully detect the mood of the user's image.
+3. User can select different moods from application. 
+4. System convert the user's image into selected mood successfully.
+5. System Trainning
 
 
 
